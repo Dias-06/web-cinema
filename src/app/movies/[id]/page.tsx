@@ -1,15 +1,12 @@
 // app/movies/[id]/page.tsx
 import MovieHero from "@/components/MovieHero";
 import MovieSection from "@/components/MovieSection";
-import { info } from "@/data/db";
 import type { Metadata } from "next"
 import { kpFetch } from "@/lib/kpFetch";
 
 interface MoviePageProps {
   params: Promise<{id: string;}>;
 }
-
-
 export async function generateMetadata(
   { params }: { params: Promise<{ id: string }> }
 ): Promise<Metadata> {
@@ -25,7 +22,6 @@ export default async function MoviePage({params} : MoviePageProps) {
   const {id} = await params;
   const movieInfo = await kpFetch(`films/${id}`);
   const relatedMovies = await kpFetch(`films/${id}/relations`)
-  console.log(relatedMovies)
   return (
     <div className="space-y-10">
       <MovieHero movie={movieInfo} />

@@ -13,7 +13,7 @@ interface MovieHeroProps extends MovieCardProps{
 interface Movie{
     movie: MovieHeroProps
 }
-type Counrty = {
+export type Counrty = {
     country: string
 }
 export default function MovieHero(props : Movie) {
