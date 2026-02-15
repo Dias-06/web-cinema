@@ -2,44 +2,20 @@
 import SelectDropdown from "./SelectDropdown";
 
 const GENRES = [
-  "Все жанры",
-  "Боевик",
-  "Комедия",
-  "Драма",
-  "Триллер",
-  "Ужасы",
-  "Фантастика",
-  "Фэнтези",
-  "Мелодрама",
-  "Детектив",
-  "Приключения",
-  "Анимация",
+  { id: "0", value: "Все жанры" },
+  { id: "11", value: "Боевик" },
+  { id: "13", value: "Комедия" },
+  { id: "2", value: "Драма" },
+  { id: "1", value: "Триллер" },
+  { id: "17", value: "Ужасы" },
+  { id: "6", value: "Фантастика" },
+  { id: "12", value: "Фэнтези" },
+  { id: "4", value: "Мелодрама" },
+  { id: "5", value: "Детектив" },
+  { id: "7", value: "Приключения" },
+  { id: "24", value: "Аниме" },
 ];
 
-const YEARS = [
-  "Любой год",
-  "2026",
-  "2025",
-  "2024",
-  "2023",
-  "2022",
-  "2021",
-  "2020",
-  "2010–2019",
-  "2000–2009",
-  "1990–1999",
-  "До 1990",
-];
-
-const RATINGS = [
-  "Любой рейтинг",
-  "9+",
-  "8+",
-  "7+",
-  "6+",
-  "5+",
-  "До 5",
-];
 
 export default function MovieFilters() {
   return (
@@ -48,18 +24,9 @@ export default function MovieFilters() {
         <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-3">
           <SelectDropdown
             label="Жанр"
+            labelVal="genre"
             placeholder="Выбери жанр"
-            options={GENRES.map((g) => ({ label: g }))}
-          />
-          <SelectDropdown
-            label="Год"
-            placeholder="Выбери год"
-            options={YEARS.map((y) => ({ label: y }))}
-          />
-          <SelectDropdown
-            label="Рейтинг"
-            placeholder="Выбери рейтинг"
-            options={RATINGS.map((r) => ({ label: r }))}
+            options={GENRES.map((g) => (g))}
           />
         </div>
 

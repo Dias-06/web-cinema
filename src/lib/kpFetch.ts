@@ -14,6 +14,7 @@ export async function kpFetch(path: string,apiVersion = "v2.2") {
         }
     })
     if(!(data.ok)){
+        console.log("fetch false")
         return false
     }
     return data.json()

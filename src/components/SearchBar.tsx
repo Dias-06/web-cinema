@@ -7,9 +7,7 @@ import { useState } from "react";
 export default function SearchBar() {
   const router = useRouter()
   const sp = useSearchParams()
-  const test = new URLSearchParams();
-  console.log(test.toString())
-  const [search,setSearch] = useState("");
+  const [search,setSearch] = useState(sp.get('query') ?? "");
   function find(){
     const p = new URLSearchParams(sp.toString())
     p.set('query',search.trim())
