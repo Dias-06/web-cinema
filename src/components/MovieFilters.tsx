@@ -2,7 +2,7 @@
 import SelectDropdown from "./SelectDropdown";
 
 const GENRES = [
-  { id: "0", value: "Все жанры" },
+  { id: "x", value: "Все жанры" },
   { id: "11", value: "Боевик" },
   { id: "13", value: "Комедия" },
   { id: "2", value: "Драма" },
@@ -15,6 +15,20 @@ const GENRES = [
   { id: "7", value: "Приключения" },
   { id: "24", value: "Аниме" },
 ];
+const RATINGS = [
+  { id: "x", value: "0" },
+  { id: "1", value: "1" },
+  { id: "2", value: "2" },
+  { id: "3", value: "3" },
+  { id: "4", value: "4" },
+  { id: "5", value: "5" },
+  { id: "6", value: "6" },
+  { id: "7", value: "7" },
+  { id: "8", value: "8" },
+  { id: "9", value: "9" },
+  { id: "10", value: "10" },
+];
+
 
 
 export default function MovieFilters() {
@@ -26,28 +40,32 @@ export default function MovieFilters() {
             label="Жанр"
             labelVal="genre"
             placeholder="Выбери жанр"
-            options={GENRES.map((g) => (g))}
+            options={GENRES}
           />
         </div>
-
+        <div className="grid flex-1 grid-cols-1 gap-4 sm:grid-cols-3">
+          <SelectDropdown
+            label="Рейтинг" 
+            labelVal="ratingFrom"
+            placeholder="Выбери рейтинг(от)"
+            options={RATINGS}
+          />
+        </div>
+        
         <div className="flex gap-2">
           <button
             type="button"
-            className="h-10 rounded-lg border border-zinc-800 bg-zinc-900 px-4 text-sm text-zinc-200 hover:bg-zinc-800"
+            className="caret-transparent h-10 rounded-lg border border-zinc-800 bg-zinc-900 px-4 text-sm text-zinc-200 hover:bg-zinc-800"
           >
             Сбросить
           </button>
           <button
             type="button"
-            className="h-10 rounded-lg bg-white px-4 text-sm font-medium text-black hover:bg-zinc-200"
+            className="caret-transparent h-10 rounded-lg bg-white px-4 text-sm font-medium text-black hover:bg-zinc-200"
           >
             Применить
           </button>
         </div>
-      </div>
-
-      <div className="mt-3 text-xs text-zinc-500">
-        * Пока это только верстка. Позже заменим на реальные query-параметры.
       </div>
     </section>
   );

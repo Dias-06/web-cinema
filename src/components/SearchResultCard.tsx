@@ -23,7 +23,7 @@ export default function SearchResultCard(props:SearchCard) {
             </div>
 
             <div className="rounded-md border flex gap-1 border-zinc-800 bg-zinc-900 px-2 py-1 text-xs text-zinc-300">
-              ★ <span>{film.rating}</span>
+              ★ <span>{film.ratingKinopoisk || film.ratingImdb}</span>
             </div>
           </div>
 

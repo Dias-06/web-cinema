@@ -10,8 +10,13 @@ export default function SearchBar() {
   const [search,setSearch] = useState(sp.get('query') ?? "");
   function find(){
     const p = new URLSearchParams(sp.toString())
-    p.set('query',search.trim())
-    p.set('page','1')
+    if(search.length>0){
+      p.set('query',search.trim())
+      p.set('page','1')
+    }
+    else{
+      p.delete("query")
+    }
     router.push(`/search?${p.toString()}`)
   }
   return (

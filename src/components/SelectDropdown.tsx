@@ -18,22 +18,25 @@ export default function SelectDropdown({
     options: Option[];
 }) {
     const [curValue,setCurValue] = useState<string>(placeholder)
-    const [selectedId,setSelectedId] = useState("");
     const details = useRef<HTMLDetailsElement>(null)
     const sp = useSearchParams()
     const router = useRouter()
-    function activateFilter(){
+    function activateFilter(id : string){
         const params = new URLSearchParams(sp.toString())
-        params.set(`${labelVal}`,selectedId)
-        params.set("page","1")
+        if(id == 'x'){
+            params.delete(labelVal)
+        }
+        else{
+            params.set(`${labelVal}`,id)
+        }
         router.push(`/search?${params.toString()}`)
     }
   return (
     <div className="space-y-2">
         <div className="text-xs text-zinc-400">{label}</div>
 
-        <details ref={details} className="group relative">
-            <summary className="flex h-10 cursor-pointer list-none items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 hover:bg-zinc-800">
+        <details ref={details} className="group relative cursor-auto">
+            <summary className="flex caret-transparent h-10 cursor-pointer list-none items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900 px-3 text-sm text-zinc-200 hover:bg-zinc-800">
             <span className="text-zinc-300">{curValue}</span>
             <span className="text-zinc-500 transition group-open:rotate-180">▾</span>
         </summary>
@@ -47,7 +50,7 @@ export default function SelectDropdown({
                     className="w-full px-3 py-2 text-left text-sm text-zinc-200 hover:bg-zinc-900"
                     onClick={() => {
                         setCurValue(o.value)
-                        activateFilter()
+                        activateFilter(o.id)
                         details.current?.removeAttribute("open");
                     }}
                 >
