@@ -1,7 +1,6 @@
-// components/Header.tsx
 import Link from "next/link";
 
-export default function Header() {
+export default async function Header() {
   return (
     <header className="border-b border-zinc-800 bg-zinc-950/70 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 py-4">
@@ -18,10 +17,10 @@ export default function Header() {
           <NavLink href="/series">Сериалы</NavLink>
         </nav>
 
-        {/* Правая часть */}
         <div className="ml-auto flex items-center gap-2">
           {/* Поиск */}
-          <div className="relative hidden sm:block">
+          <Link href={"/search"}>
+            <div className="relative hidden sm:block">
             <input
               type="text"
               placeholder="Поиск..."
@@ -31,16 +30,13 @@ export default function Header() {
               ⌕
             </span>
           </div>
-
-          {/* Кнопка аккаунта */}
-          <button
+          </Link>
+            <button
             type="button"
             className="h-10 rounded-lg border border-zinc-800 bg-zinc-900 px-4 text-sm font-medium hover:bg-zinc-800"
           >
-            Аккаунт
+            Account
           </button>
-
-          {/* Бургер (просто для вида, без логики) */}
           <button
             type="button"
             className="inline-flex h-10 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900 px-3 hover:bg-zinc-800 md:hidden"
@@ -50,8 +46,6 @@ export default function Header() {
           </button>
         </div>
       </div>
-
-      {/* Мобильная навигация (просто видимая строка, без открытия/закрытия) */}
       <div className="border-t border-zinc-800 md:hidden">
         <div className="mx-auto flex w-full max-w-6xl items-center gap-2 px-4 py-3">
           <MobileNavLink href="/">Главная</MobileNavLink>

@@ -73,7 +73,6 @@ export default async function SearchPage(props : SearchPageProps) {
               </div>
             )
       }
-      
     </div>
   );
 }

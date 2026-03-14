@@ -18,15 +18,23 @@ export type Counrty = {
 }
 export default function MovieHero(props : Movie) {
     const {movie} = props;
-
     function getAge(text:string){
-      const age = text.match(/(\d+)/);
-      if(age != null){
-        const res = age[0] + "+";
-        return res; 
+      if(text == null){
+        return "18+"
       }
+      let age;
+      if(text.match(/(\d+)/)){
+        age = text.match(/(\d+)/)
+        if(age != null){
+          const res = age[0] + "+";
+          return res; 
+        }
+      } 
     }
     function getFilmLength(minutes:number){
+      if(minutes == null){
+        return "Не указано"
+      }
       const h = Math.floor(minutes / 60);
       const m = minutes % 60;
       const res = h + " ч." + m +" мин."
@@ -64,7 +72,7 @@ export default function MovieHero(props : Movie) {
 
               <span className="inline-flex items-center gap-1 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-1 text-sm text-zinc-200">
                 ★ <b className="font-semibold">{movie.ratingImdb}</b>
-                <span className="text-zinc-400">/10</span>
+                <span className="text-zinc-400">{movie.ratingImdb || "9"}/10</span>
               </span>
             </div>
 
